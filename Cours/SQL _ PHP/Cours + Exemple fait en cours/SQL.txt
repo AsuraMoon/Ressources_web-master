@@ -1,0 +1,88 @@
+SELECT * 
+FROM film
+WHERE extract (year from annee) <= 2000 AND genre != 'Policier';
+
+SELECT *
+FROM film
+WHERE extract (year from annee) <= 2000 AND genre = 'Drame';
+
+SELECT DISTINCT Genre
+FROM film
+
+
+
+SELECT genre
+FROM film
+WHERE extract (year from annee) < 2000;
+
+SELECT nom, prenom
+FROM individu
+WHERE prenom = 'John'
+UNION
+SELECT nom, prenom
+FROM individu
+WHERE prenom = 'Paul';
+
+SELECT prenom
+FROM individu
+INTERSECT
+SELECT role
+FROM jouer;
+
+SELECT nom
+FROM individu
+WHERE UPPER(nom) LIKE '%T%' OR UPPER(nom) LIKE '%W%'
+EXCEPT
+SELECT nom
+FROM individu
+WHERE prenom = 'John';
+
+
+
+
+
+SELECT titre
+FROM film
+WHERE genre = 'Drame';
+
+SELECT DISTINCT titre
+FROM projection P inner join film F on P.num_film = F.num_film
+                  inner join cinema C on P.num_cine = C.num_cine
+WHERE nom = 'Le Fontenelle';
+
+SELECT DISTINCT nom, prenom
+FROM film F inner join individu I on F.num_ind = I.num_ind
+
+SELECT DISTINCT nom, prenom
+FROM individu I inner join jouer J on I.num_ind = J.num_ind
+
+SELECT nom, prenom
+FROM individu I inner join film F on I.num_ind = F.num_ind
+INTERSECT
+SELECT nom, prenom
+FROM individu I inner join jouer J on I.num_ind = J.num_ind
+
+SELECT DISTINCT titre
+FROM projection P inner join film F on P.num_film = F.num_film
+WHERE extract (year from date) = 2002;
+
+SELECT titre
+FROM individu I inner join film F on I.num_ind = F.num_ind
+WHERE nom = 'von Trier'
+
+SELECT nom, prenom
+FROM individu I inner join film F on I.num_ind = F.num_ind
+WHERE genre = 'Epouvante'
+INTERSECT
+SELECT nom, prenom
+FROM individu I inner join film F on I.num_ind = F.num_ind
+WHERE genre = 'Drame'
+
+
+
+
+SELECT DISTINCT titre, I.nom, I.prenom, C.nom, EXTRACT(year from P.date) AS "ANNEE PROJECTION" FROM individu I 
+inner join film F on I.num_ind = F.num_ind
+inner join projection P on F.num_film = P.num_film
+inner join cinema C on P.num_cine = C.num_cine
+WHERE I.nom = 'von Trier' AND C.nom LIKE "%FON%" AND EXTRACT(year FROM F.annee) = 1996;

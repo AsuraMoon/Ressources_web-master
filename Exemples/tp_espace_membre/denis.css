@@ -1,0 +1,73 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body, .wrapper,.tout{
+    min-height:100vh;
+    display:flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    background-color:lightgray;
+}
+
+
+form{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    background-color:white;
+    padding: 3vh;
+    border-radius: 2vh;
+    box-shadow: 2vh 2vh 1vh #0005;
+}
+
+form>*{
+    margin:0.5vh;
+}
+
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    border-bottom: 1px solid gray;
+    text-align:right;
+    padding:15px;
+    background-color:white;
+    box-shadow: 0 0 2vh #0005;
+}
+
+input[type=submit],button{
+    text-decoration:none;
+    border:1px solid black;
+    border-radius:5px;
+    padding:5px;
+    color:white;
+    background-color:green;
+    margin:5px;
+}
+
+#error{
+    margin-top:3vh;
+    background-color:red;
+    color:white;
+    padding:5px;
+    border:1px solid black;
+    margin-bottom:1vh;
+    box-shadow: 2vh 2vh 1vh #0005;
+    border-radius:1vh;
+  }
+
+/* Pour corriger les modifs de Jeremy */
+
+.bg-bubbles{
+    display:none;
+}
+
+.tout>button{
+    width:100px;
+    margin:auto;
+}
